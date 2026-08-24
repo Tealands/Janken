@@ -161,9 +161,9 @@ public class PlayActivity extends AppCompatActivity {
     private void setHandImage(ImageView iv, Hand hand) {
         String fileName;
         switch (hand) {
-            case ROCK:     fileName = "image/hand_rock.png";     break;
-            case SCISSORS: fileName = "image/hand_scissors.png"; break;
-            case PAPER:    fileName = "image/hand_paper.png";    break;
+            case ROCK:     fileName = "image/Rock.jpg";     break;
+            case SCISSORS: fileName = "image/Scissors.jpg"; break;
+            case PAPER:    fileName = "image/Paper.jpg";    break;
             default:       iv.setImageResource(android.R.color.transparent); return;
         }
         try (InputStream is = getAssets().open(fileName)) {
