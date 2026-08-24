@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Janken</string>
+    <string name="app_name">じゃんけん</string>
+    <string name="play">プレイ</string>
+    <string name="record">記録</string>
+    <string name="setting">設定</string>
+    <string name="statistics">統計</string>
+    <string name="rock">グー</string>
+    <string name="scissors">チョキ</string>
+    <string name="paper">パー</string>
+    <string name="player_hand">プレイヤーの手</string>
+    <string name="cpu_hand">CPUの手</string>
 </resources>
