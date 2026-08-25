@@ -1,12 +1,8 @@
 package com.example.janken.activity;
 
 import android.os.Bundle;
-<<<<<<< HEAD
-import android.widget.Button;
-import android.widget.TextView;
-=======
 import android.view.MenuItem;
->>>>>>> d3ae9a76517b0a08ede7534b9732b099c415a351
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,9 +41,6 @@ public class RecordActivity extends AppCompatActivity {
             stats.getWins(), stats.getLosses(), stats.getDraws()));
         tvHandBreakdown.setText(String.format("グー勝率: %.1f%%\nチョキ勝率: %.1f%%\nパー勝率: %.1f%%",
             stats.getRockWinRate(), stats.getScissorsWinRate(), stats.getPaperWinRate()));
-
-        Button btnBack = findViewById(R.id.btn_back);
-        btnBack.setOnClickListener(v -> finish());
 
         RecyclerView rv = findViewById(R.id.rv_records);
         rv.setLayoutManager(new LinearLayoutManager(this));
