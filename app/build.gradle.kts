@@ -32,11 +32,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    sourceSets {
-        getByName("main") {
-            assets.srcDir("src/assets")
-        }
-    }
 }
 
 dependencies {

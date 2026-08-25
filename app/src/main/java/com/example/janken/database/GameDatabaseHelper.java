@@ -16,7 +16,7 @@ public class GameDatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "janken.db";
     private static final int DB_VERSION = 1;
     private static final String TABLE = "game_records";
-    private static final int MAX_RECORDS = 20;
+    private static final int MAX_RECORDS = 50;
 
     public GameDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

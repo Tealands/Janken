@@ -1,6 +1,7 @@
 package com.example.janken.activity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,15 @@ public class StatisticsActivity extends AppCompatActivity {
         TextView tvRockWin      = findViewById(R.id.tv_rock_win_rate);
         TextView tvScissorsWin  = findViewById(R.id.tv_scissors_win_rate);
         TextView tvPaperWin     = findViewById(R.id.tv_paper_win_rate);
+        TextView tvHandRates    = findViewById(R.id.tv_hand_rates);
+        TextView tvResults      = findViewById(R.id.tv_results);
+
+        tvHandRates.setText(String.format("グー %.1f%%  チョキ %.1f%%  パー %.1f%%",
+            stats.getRockRate(), stats.getScissorsRate(), stats.getPaperRate()));
+        tvResults.setText(String.format("勝ち: %d    負け: %d    引き分け: %d",
+            stats.getWins(), stats.getLosses(), stats.getDraws()));
+        Button btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(v -> finish());
 
         tvRockRate.setText(String.format("グー出現率: %.1f%%", stats.getRockRate()));
         tvScissorsRate.setText(String.format("チョキ出現率: %.1f%%", stats.getScissorsRate()));

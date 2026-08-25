@@ -102,6 +102,7 @@ public class PlayActivity extends AppCompatActivity {
         if (!waiting) return;
         selectedHand = hand;
         setHandImage(ivPlayerHand, hand);
+        soundManager.playHand();
     }
 
     private void resolveRound() {
@@ -109,6 +110,7 @@ public class PlayActivity extends AppCompatActivity {
 
         if (selectedHand == Hand.UNKNOWN) {
             selectedHand = Hand.ROCK;
+            soundManager.playHand();
         }
 
         Hand cpuHand = game.decideCpuHand();

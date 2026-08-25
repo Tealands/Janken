@@ -8,6 +8,9 @@ public class GameStatistics {
     private int rockCount;
     private int scissorsCount;
     private int paperCount;
+    private int wins;
+    private int losses;
+    private int draws;
     private int rockWins;
     private int scissorsWins;
     private int paperWins;
@@ -17,6 +20,13 @@ public class GameStatistics {
         for (GameRecord r : records) {
             String hand = r.getPlayerHand();
             String result = r.getResult();
+            if ("勝ち".equals(result)) {
+                wins++;
+            } else if ("負け".equals(result)) {
+                losses++;
+            } else if ("引き分け".equals(result)) {
+                draws++;
+            }
             if ("グー".equals(hand)) {
                 rockCount++;
                 if ("勝ち".equals(result)) rockWins++;
@@ -55,4 +65,7 @@ public class GameStatistics {
     }
 
     public int getTotalGames() { return totalGames; }
+    public int getWins() { return wins; }
+    public int getLosses() { return losses; }
+    public int getDraws() { return draws; }
 }
