@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,11 +64,24 @@ public class PlayActivity extends AppCompatActivity {
         soundManager = new SoundManager(this);
         soundManager.setVolume(vol);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         btnRock.setOnClickListener(v     -> selectHand(Hand.ROCK));
         btnScissors.setOnClickListener(v -> selectHand(Hand.SCISSORS));
         btnPaper.setOnClickListener(v    -> selectHand(Hand.PAPER));
 
         startRound();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void startRound() {

@@ -1,8 +1,12 @@
 package com.example.janken.activity;
 
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.TextView;
+=======
+import android.view.MenuItem;
+>>>>>>> d3ae9a76517b0a08ede7534b9732b099c415a351
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +26,10 @@ public class RecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         GameDatabaseHelper dbHelper = new GameDatabaseHelper(this);
         List<GameRecord> records = dbHelper.getRecentRecords();
@@ -44,5 +52,14 @@ public class RecordActivity extends AppCompatActivity {
         RecyclerView rv = findViewById(R.id.rv_records);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new RecordAdapter(records));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

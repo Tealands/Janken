@@ -1,7 +1,13 @@
 package com.example.janken.activity;
 
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.widget.Button;
+=======
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TableLayout;
+>>>>>>> d3ae9a76517b0a08ede7534b9732b099c415a351
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,9 +26,25 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         GameDatabaseHelper dbHelper = new GameDatabaseHelper(this);
         List<GameRecord> records = dbHelper.getRecentRecords();
         dbHelper.close();
+
+        TextView tvNoData       = findViewById(R.id.tv_no_data);
+        TableLayout tableLayout = findViewById(R.id.table_stats);
+
+        if (records.isEmpty()) {
+            tvNoData.setVisibility(View.VISIBLE);
+            tableLayout.setVisibility(View.GONE);
+            return;
+        }
+
+        tvNoData.setVisibility(View.GONE);
+        tableLayout.setVisibility(View.VISIBLE);
 
         GameStatistics stats = new GameStatistics(records);
 
@@ -42,11 +64,20 @@ public class StatisticsActivity extends AppCompatActivity {
         Button btnBack = findViewById(R.id.btn_back);
         btnBack.setOnClickListener(v -> finish());
 
-        tvRockRate.setText(String.format("グー出現率: %.1f%%", stats.getRockRate()));
-        tvScissorsRate.setText(String.format("チョキ出現率: %.1f%%", stats.getScissorsRate()));
-        tvPaperRate.setText(String.format("パー出現率: %.1f%%", stats.getPaperRate()));
-        tvRockWin.setText(String.format("グー勝率: %.1f%%", stats.getRockWinRate()));
-        tvScissorsWin.setText(String.format("チョキ勝率: %.1f%%", stats.getScissorsWinRate()));
-        tvPaperWin.setText(String.format("パー勝率: %.1f%%", stats.getPaperWinRate()));
+        tvRockRate.setText(String.format("%.0f%%", stats.getRockRate()));
+        tvScissorsRate.setText(String.format("%.0f%%", stats.getScissorsRate()));
+        tvPaperRate.setText(String.format("%.0f%%", stats.getPaperRate()));
+        tvRockWin.setText(String.format("%.0f%%", stats.getRockWinRate()));
+        tvScissorsWin.setText(String.format("%.0f%%", stats.getScissorsWinRate()));
+        tvPaperWin.setText(String.format("%.0f%%", stats.getPaperWinRate()));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
